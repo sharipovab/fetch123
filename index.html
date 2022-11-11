@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="main" class="d-flex flex-wrap gap-3 justify-content-center">
+        <!-- <div class="card" style="width: 18rem;">
+            <img src="" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-primary" id="butt"></a>
+            </div>
+          </div> -->
+    </div>
+    <script type="text/javascript">
+            fetch('https://getty.uz/get-posts')
+            .then(response => response.json())
+            .then(response => {
+                for(obj of response.data) {
+                    console.log(obj);
+                    var maindiv = document.querySelector('#main');
+                    var div = document.createElement('div');
+                    div.classList.add('card');
+                    var img = document.createElement('img');
+                    img.classList.add('card-img-top');
+                    var body = document.createElement('div');
+                    body.classList.add('card-body');
+                    var h2 = document.createElement('h5');
+                    h2.classList.add('card-title');
+                    var p = document.createElement('p');
+                    p.classList.add('card-text');
+                    var button = document.createElement('a');
+                    button.classList.add('btn-primary');
+                    button.classList.add('btn');
+                    // button.classList.add('main_button');
+                    button.innerText = 'Read more';
+                    button.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+                    // div.classList.add('cards');
+                    // div.classList.add('cards2');
+                    maindiv.appendChild(div);
+                    div.appendChild(img);
+                    div.appendChild(body);
+                    body.appendChild(h2);
+                    body.appendChild(p);
+                    body.appendChild(button);
+                    h2.innerText = obj.title;
+                    p.innerText = obj.info;
+                    img.src = 'https://getty.uz/'+obj.image;
+                    div.style.width = '18rem';
+                }
+            });
+    </script>
+</body>
+</html>
